@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.card {
+  border: 1px solid hsl(0, 0%, 80%);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px hsl(0, 0%, 0%, 0.1);
+  padding: 1rem;
+  margin: 10px;
+  text-align: center;
+  width: min(100%, 250px);
+  display: inline-block;
+
+  .card-img {
+    width: 45%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .title,
+  .desc {
+    font-family: Arial, Helvetica, sans-serif;
+    color: hsl(0, 0, 20%);
+  }
+}
+
+.btn {
+  background-color: hsl(200, 100%, 50%);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.3rem;
+  border: none;
+  cursor: pointer;
+}
+
+.student {
+  font-family: Arial, Helvetica, sans-serif;
+  font: 2rem;
+  padding: 10px;
+  border: 1px solid hsl(0, 0%, 50%, 0.8);
+  margin: 10px;
+}
+ */
+
+@layer components {
+  .message {
+    @apply text-4xl text-white p-[1rem] rounded;
+
+    &.welcome {
+      background-color: hsl(120, 100%, 42%);
+    }
+    &.login-prompt {
+      background-color: hsl(0, 100%, 42%);
+    }
+  }
+}
