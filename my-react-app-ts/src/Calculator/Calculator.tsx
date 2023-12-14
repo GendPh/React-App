@@ -31,6 +31,11 @@ export default function Calculator() {
   function handleResultDisplay() {
     try {
       let result = Number(eval(displayValue)).toFixed(5);
+
+      if (!isFinite(result)) {
+        throw new Error("Error");
+      }
+      
       setDisplayValue(eval(String(result)));
     } catch (error) {
       setStartCalc(false);
@@ -51,7 +56,9 @@ export default function Calculator() {
       />
       <div className="keys">
         <div className="row">
-          <button onClick={handleClearDisplay} className="col-span-2">AC</button>
+          <button onClick={handleClearDisplay} className="col-span-2">
+            AC
+          </button>
           <button onClick={handleSignalDisplay}>+/-</button>
           <button onClick={() => handleAddDisplay("/")}>/</button>
         </div>
