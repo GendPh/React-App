@@ -595,6 +595,10 @@ body {
         --tw-bg-opacity: 1;
         background-color: rgb(31 41 55 / var(--tw-bg-opacity));
       }
+      & button:hover {
+        --tw-bg-opacity: 1;
+        background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+      }
     }
     & button {
       --tw-bg-opacity: 1;
@@ -608,9 +612,28 @@ body {
       line-height: 2rem;
     }
     & button {
+      transition-property: all;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 150ms;
+    }
+    & button {
+      transition-duration: 200ms;
+    }
+    & button {
+      transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+    }
+    & button:hover {
+      --tw-bg-opacity: 1;
+      background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+    }
+    & button {
       &:last-of-type {
         --tw-bg-opacity: 1;
         background-color: rgb(245 158 11 / var(--tw-bg-opacity));
+      }
+      &:last-of-type:hover {
+        --tw-bg-opacity: 1;
+        background-color: rgb(217 119 6 / var(--tw-bg-opacity));
       }
     }
   }
@@ -684,6 +707,10 @@ body {
 
 .max-w-sm {
   max-width: 24rem;
+}
+
+.max-w-xs {
+  max-width: 20rem;
 }
 
 .translate-x-\[-50\%\] {

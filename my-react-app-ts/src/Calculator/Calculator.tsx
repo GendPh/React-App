@@ -1,9 +1,8 @@
 import { useState } from "react";
 
 export default function Calculator() {
-  const [displayValue, setDisplayValue] = useState<string>("0");
   const [startCalc, setStartCalc] = useState<boolean>(false);
-  const [signal, setSignal] = useState<boolean>(false);
+  const [displayValue, setDisplayValue] = useState<string>("0");
 
   function handleAddDisplay(data: string) {
     if (!startCalc) {
@@ -14,29 +13,35 @@ export default function Calculator() {
     }
   }
 
+  function handleSignalDisplay() {
+    const value = Number(displayValue);
+
+    if (value < 0) {
+      setDisplayValue(String(Math.abs(value)));
+    } else {
+      setDisplayValue("-" + String(value));
+    }
+  }
+
   function handleClearDisplay() {
-    setDisplayValue(" ");
+    setDisplayValue("0");
+    setStartCalc(false);
   }
 
   function handleResultDisplay() {
     try {
-      setDisplayValue(eval(displayValue));
+      let result = Number(eval(displayValue)).toFixed(5);
+      setDisplayValue(eval(String(result)));
     } catch (error) {
+      setStartCalc(false);
       setDisplayValue("Error");
-    }
-  }
-
-  function handleSinDisplay() {
-    const value = Number(displayValue);
-    if (value < 0) {
-      setDisplayValue((prevValue) => String(Math.abs(value)));
     }
   }
 
   return (
     <div
       id="Calculator"
-      className="max-w-sm mx-auto bg-gray-900 text-white border border-gray-400 mt-10"
+      className="max-w-xs mx-auto bg-gray-900 text-white border border-gray-400 mt-10"
     >
       <input
         id="display"
@@ -46,10 +51,8 @@ export default function Calculator() {
       />
       <div className="keys">
         <div className="row">
-          <button onClick={handleClearDisplay} className="col-span-2">
-            AC
-          </button>
-          <button>+/-</button>
+          <button onClick={handleClearDisplay} className="col-span-2">AC</button>
+          <button onClick={handleSignalDisplay}>+/-</button>
           <button onClick={() => handleAddDisplay("/")}>/</button>
         </div>
         <div className="row">

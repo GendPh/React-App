@@ -1,4 +1,4 @@
-import Calculator from "./Calculator.tsx";
+import Calculator from "./Calculator/Calculator.tsx";
 
 function App() {
   return <Calculator />;
