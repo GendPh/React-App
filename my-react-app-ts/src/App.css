@@ -1,3 +1,5 @@
+/* npx tailwindcss -i ./src/app.css -o ./src/index.css --watch */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,6 +7,7 @@
 @layer base {
   body {
     font-family: Arial, Helvetica, sans-serif;
+    @apply bg-slate-800;
   }
 }
 
@@ -12,6 +15,26 @@
   .count-container {
     & button {
       @apply p-2 rounded-lg w-32 text-2xl text-white font-bold mx-5 cursor-pointer bg-slate-700 hover:bg-slate-900;
+    }
+  }
+
+  .keys {
+    .row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-bottom: 2px;
+      &:first-of-type {
+        & button {
+          @apply bg-gray-800;
+        }
+      }
+      & button {
+        @apply bg-gray-700 text-2xl p-2;
+        &:last-of-type {
+          @apply bg-amber-500;
+        }
+      }
     }
   }
 }

@@ -1,11 +1,7 @@
-import Count from "./Count.tsx";
+import Calculator from "./Calculator.tsx";
 
 function App() {
-  return (
-    <>
-      <Count />
-    </>
-  );
+  return <Calculator />;
 }
 
 export default App;
