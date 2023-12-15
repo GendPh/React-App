@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  body {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 500;
+    @apply bg-white;
+  }
+
+  /* For modern browsers */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* For Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  header {
+    position: relative;
+    @apply lg:w-[550px] lg:flex lg:flex-col-reverse;
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      bottom: 40%;
+      background-image: url(./assets/bg-main-mobile.png);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      z-index: -1;
+      @apply lg:bottom-0 lg:right-[25%] lg:bg-[url(./assets/bg-main-desktop.png)];
+    }
+    .card {
+      position: relative;
+      width: min(70%, 320px);
+      @apply aspect-video;
+
+      &.back {
+        margin-left: auto;
+        background: transparent url(./assets/bg-card-back.png) no-repeat
+          center/contain;
+        @apply mr-[5%] md:mr-[20%] lg:mr-[0] lg:mt-[20%] lg:mb-[60%];
+        & p {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 10%;
+          font-size: 14px;
+          letter-spacing: 0.3rem;
+          @apply text-white;
+        }
+      }
+      &.front {
+        margin-right: auto;
+        padding: 1rem;
+        transform: translateY(-45%);
+        background: transparent url(./assets/bg-card-front.png) no-repeat
+          center/contain;
+        @apply flex flex-col justify-between ml-[5%] md:ml-[20%] lg:ml-[30%] lg:mb-[-35%];
+        .circle {
+          --width: 20px;
+          width: var(--width);
+          aspect-ratio: 1/1;
+          border-radius: 50%;
+          background-color: white;
+
+          &:last-child {
+            width: calc(var(--width) / 2);
+            background-color: transparent;
+            border: 1px solid white;
+          }
+        }
+        .text-area {
+          & p {
+            @apply flex justify-between uppercase text-white;
+          }
+        }
+      }
+    }
+  }
+
+  main {
+    padding: 0 1rem;
+    max-width: 600px;
+    display: grid;
+    place-content: center;
+    @apply text-very-dark-violet mx-auto;
+    & label,
+    & p {
+      @apply uppercase;
+    }
+    & input {
+      width: 100%;
+      padding: 0.5rem 1rem;
+      margin: 0.5rem 0;
+      @apply border border-dark-grayish-violet rounded-md outline-none focus:border-very-dark-violet;
+
+      &::placeholder {
+        @apply text-light-grayish-violet;
+      }
+    }
+    .wrong-input {
+      @apply border-red-700 focus:border-red-600;
+    }
+    & button {
+      padding: 0.5rem 1rem;
+      @apply bg-very-dark-violet text-white w-full rounded mt-5 hover:bg-black;
+    }
+  }
+}
