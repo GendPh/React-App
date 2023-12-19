@@ -13,12 +13,18 @@ export default function Header() {
 
         <div className="text-area">
           <p>
-            <span>0000</span> <span>0000</span> <span>0000</span>{" "}
-            <span>0000</span>
+            <span className="card-number">0000</span>
+            <span className="card-number">0000</span>
+            <span className="card-number">0000</span>
+            <span className="card-number">0000</span>
           </p>
 
           <p className="font-light text-sm">
-            <span>jane appleaseed</span> <span>00/00</span>
+            <span id="card-name">jane appleaseed</span>{" "}
+            <span>
+              <span className="card-month">00</span>/
+              <span className="card-year">00</span>
+            </span>
           </p>
         </div>
       </div>
