@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@200;400;700&family=Bellefair&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    height: 100%;
+  }
+
+  header {
+    @apply relative z-10;
+  }
+
+  header,
+  section {
+    @apply px-5;
+  }
+
+  section {
+    @apply min-h-screen relative z-0 text-light-blue text-center pt-28 pb-10 uppercase;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-bellefair;
+  }
+
+  h5 {
+    @apply font-barlow-condensed;
+  }
+}
+
+@layer components {
+  .heading-1 {
+    @apply text-9xl;
+  }
+  .heading-2 {
+    @apply text-8xl;
+  }
+  .heading-3 {
+    @apply text-5xl;
+  }
+  .heading-4 {
+    @apply text-3xl;
+  }
+  .heading-5 {
+    @apply text-2xl;
+  }
+  .subHeading-1 {
+    font-size: 28px;
+    @apply font-bellefair;
+  }
+  .subHeading-2 {
+    font-size: 14px;
+    letter-spacing: 2.35px;
+    @apply font-bellefair;
+  }
+  .nav-text {
+    @apply text-[16px] font-barlow-condensed tracking-[2.7px];
+    & li {
+      @apply relative;
+
+      &.is-active::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        width: 5px;
+        background-color: white;
+      }
+      &.destination {
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: -10px;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background-color: transparent;
+          transition: background-color 0.1s linear;
+        }
+        &:hover {
+          &::after {
+            background-color: rgba(255, 255, 255, 0.3);
+          }
+        }
+        &.active {
+          color: white;
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: white;
+          }
+        }
+      }
+    }
+  }
+
+  .description {
+    @apply text-[20px] font-barlow-condensed leading-8 normal-case font-extralight;
+  }
+  section {
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &#home {
+      background-image: url(./assets/home/background-home-mobile.jpg);
+    }
+    &#destination {
+      background-image: url(./assets/destination/background-destination-mobile.jpg);
+    }
+  }
+
+  #home-button {
+    --boxShadowColor: rgba(0, 0, 0, 0.283);
+    display: block;
+    background-color: white;
+    color: black;
+    padding: 4.1rem 2rem;
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 0px var(--boxShadowColor);
+    transition: box-shadow 0.1s linear;
+
+    &:hover {
+      box-shadow: 0px 0px 0px 30px var(--boxShadowColor);
+    }
+  }
+}
