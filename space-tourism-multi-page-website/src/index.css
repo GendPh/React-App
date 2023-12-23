@@ -16,11 +16,40 @@
 
   header,
   section {
-    @apply px-5;
+    @apply px-6;
   }
 
   section {
-    @apply min-h-screen relative z-0 text-light-blue text-center pt-28 pb-10 uppercase;
+    position: relative;
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @apply min-h-screen relative z-0 text-light-blue text-center pt-28 md:pt-44 pb-10 md:pb-24 uppercase md:px-0;
+    &#home {
+      background-image: url(./assets/home/background-home-mobile.jpg);
+      @apply md:bg-[url(./assets/home/background-home-tablet.jpg)];
+    }
+    &#destination {
+      background-image: url(./assets/destination/background-destination-mobile.jpg);
+      @apply md:bg-[url(./assets/destination/background-destination-tablet.jpg)];
+    }
+    &#crew {
+      background-image: url(./assets/crew/background-crew-mobile.jpg);
+      @apply md:bg-[url(./assets/crew/background-crew-tablet.jpg)];
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        @apply backdrop-blur-[5px];
+      }
+    }
+    &#technology {
+      background-image: url(./assets/technology/background-technology-mobile.jpg);
+      @apply md:bg-[url(./assets/technology/background-technology-tablet.jpg)];
+    }
   }
 
   h1,
@@ -37,19 +66,20 @@
 
 @layer components {
   .heading-1 {
-    @apply text-9xl;
+    font-size: 150px;
   }
   .heading-2 {
-    @apply text-8xl;
+    font-size: 100px;
   }
   .heading-3 {
-    @apply text-5xl;
+    font-size: 56px;
   }
   .heading-4 {
-    @apply text-3xl;
+    font-size: 32px;
   }
   .heading-5 {
-    @apply text-2xl;
+    font-size: 14px;
+    letter-spacing: 4.75px;
   }
   .subHeading-1 {
     font-size: 28px;
@@ -58,24 +88,57 @@
   .subHeading-2 {
     font-size: 14px;
     letter-spacing: 2.35px;
-    @apply font-bellefair;
+    @apply font-barlow-condensed;
   }
   .nav-text {
-    @apply text-[16px] font-barlow-condensed tracking-[2.7px];
+    font-size: 16px;
+    letter-spacing: 2.7px;
+    @apply font-barlow-condensed;
+
     & li {
       @apply relative;
 
-      &.is-active::after {
-        content: "";
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        top: 0;
-        width: 5px;
-        background-color: white;
+      & a.nav {
+        @apply md:py-8 block;
+        &.is-active::after {
+          content: "";
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          top: 0;
+          width: 5px;
+          background-color: white;
+          @apply md:left-0 md:top-[95%] md:w-full;
+        }
       }
+    }
+  }
+
+  .description {
+    @apply normal-case font-extralight md:text-xl;
+  }
+
+  #home-button {
+    background-color: white;
+    padding: 4.5rem 2.25rem;
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 0px;
+    transition: box-shadow 0.1s linear;
+    font-size: 20px;
+    font-weight: 300;
+    @apply text-dark;
+
+    &:hover {
+      box-shadow: 0px 0px 0px 30px;
+      @apply shadow-dark;
+    }
+  }
+  .list {
+    @apply mx-auto w-fit flex gap-3 my-6 text-light-blue;
+    & li {
+      position: relative;
+
       &.destination {
-        position: relative;
         &::after {
           content: "";
           position: absolute;
@@ -104,38 +167,34 @@
           }
         }
       }
+
+      &.crew {
+        @apply bg-white w-3 aspect-square rounded-full opacity-30 transition-opacity duration-150;
+
+        &.active {
+          @apply opacity-100;
+        }
+
+        &:hover {
+          @apply opacity-90;
+        }
+      }
+
+      &.tec-list {
+        @apply px-4 py-2 rounded-full text-white outline outline-1 outline-[rgba(255,255,255,0.3)] transition-all duration-500;
+        &:hover {
+          @apply outline-white;
+        }
+        &.active {
+          @apply bg-white text-black outline-[rgba(255,255,255,1)];
+        }
+      }
     }
   }
 
-  .description {
-    @apply text-[20px] font-barlow-condensed leading-8 normal-case font-extralight;
-  }
-  section {
-    background-color: transparent;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    &#home {
-      background-image: url(./assets/home/background-home-mobile.jpg);
-    }
-    &#destination {
-      background-image: url(./assets/destination/background-destination-mobile.jpg);
-    }
-  }
-
-  #home-button {
-    --boxShadowColor: rgba(0, 0, 0, 0.283);
-    display: block;
-    background-color: white;
-    color: black;
-    padding: 4.1rem 2rem;
-    border-radius: 50%;
-    box-shadow: 0px 0px 0px 0px var(--boxShadowColor);
-    transition: box-shadow 0.1s linear;
-
-    &:hover {
-      box-shadow: 0px 0px 0px 30px var(--boxShadowColor);
-    }
+  .line {
+    height: 0.5px;
+    transform: scaleY(0.5);
+    @apply bg-light-blue bg-opacity-60;
   }
 }

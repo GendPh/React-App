@@ -7,12 +7,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        "dark": "#0B0D17",
+        "dark": "#151821",
         "light-blue": "#D0D6F9",
       },
       fontFamily: {
         "barlow-condensed": ['Barlow Condensed', "sans-serif"],
-        
+
         "bellefair": ['Bellefair', "serif"],
       }
     },

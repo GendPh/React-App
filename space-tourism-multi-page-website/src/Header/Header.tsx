@@ -20,9 +20,9 @@ export default function Header() {
       }
     }
   }
-  
+
   useEffect(() => {
-    const links = document.querySelectorAll(".nav-text li");
+    const links = document.querySelectorAll(".nav-text li a");
 
     links.forEach((link) => {
       link.addEventListener("click", () => {
@@ -35,12 +35,17 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 flex items-center justify-between py-6">
-      <img src={NavIcon} alt="Nav Bar Icon" width={45} />
+    <header className="fixed top-0 left-0 right-0 flex items-center justify-between py-6 md:p-0">
+      <img
+        src={NavIcon}
+        alt="Nav Bar Icon"
+        width={45}
+        className="md:ml-10 md:w-18"
+      />
 
       <button
         ref={navButtonRef}
-        className="hamburger hamburger--collapse relative z-50"
+        className="hamburger hamburger--collapse relative z-50 md:hidden"
         type="button"
         onClick={handleNavButton}
       >
@@ -51,28 +56,27 @@ export default function Header() {
 
       <nav
         ref={navElRef}
-        className="fixed z-40 inset-0 left-36 translate-x-[100%] bg-slate-700 bg-opacity-35 backdrop-filter backdrop-blur-md pl-10 py-32"
-        /* translate-x-[100%] */
+        className="fixed md:static z-40 inset-0 left-36 translate-x-[100%] md:translate-x-[0] bg-dark bg-opacity-35 md:bg-opacity-100 backdrop-filter backdrop-blur-md md:backdrop-blur-none pl-10 py-32 md:p-0 md:px-8"
       >
-        <ul className="nav-text uppercase text-white flex flex-col gap-6">
-          <li className="is-active">
-            <a href="#home">
-              <span className="font-bold mr-5">00</span> home
+        <ul className="nav-text uppercase text-white flex flex-col md:flex-row gap-6">
+          <li>
+            <a href="#home" className="nav is-active">
+              <span className="font-bold mr-2 md:hidden">00</span> home
             </a>
           </li>
           <li>
-            <a href="#destination">
-              <span className="font-bold mr-5">01</span> destination
+            <a href="#destination" className="nav">
+              <span className="font-bold mr-2 md:hidden">01</span> destination
             </a>
           </li>
           <li>
-            <a href="#">
-              <span className="font-bold mr-5">02</span> crew
+            <a href="#crew" className="nav">
+              <span className="font-bold mr-2 md:hidden">02</span> crew
             </a>
           </li>
           <li>
-            <a href="#">
-              <span className="font-bold mr-5">03</span> technologies
+            <a href="#technology" className="nav">
+              <span className="font-bold mr-2 md:hidden">03</span> technologies
             </a>
           </li>
         </ul>
