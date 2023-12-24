@@ -74,53 +74,62 @@ export default function Destination({ out, entry, timer }: GsapChange) {
   }
 
   return (
-    <section id="destination">
-      <SectionHeading number={1} title="Pick your destination" />
-
+    <section id="destination" className="md:pb-8 auto-rows-max text-start">
       {currentDestination && (
         <>
-          <SectionImg
-            src={currentDestination.images.webp}
-            name={currentDestination.name}
-            specialClass="desc-element my-6 md:my-10"
-          />
-
-          <ul className="list nav-text">
-            {destinations.map((dest, i) => (
-              <li
-                className={i === index ? "destination active" : "destination"}
-                key={dest.name}
-                onClick={() => handleDestinationClick(i)}
-              >
-                {dest.name}
-              </li>
-            ))}
-          </ul>
-
-          <h3 className="desc-element heading-3  text-white">
-            {currentDestination.name}
-          </h3>
-
-          <div className="md:px-14">
-            <p className="desc-element description">
-              {currentDestination.description}
-            </p>
-
-            <div className="line my-6 md:my-10"></div>
+          <div className="col-span-2">
+            <SectionHeading number={1} title="Pick your destination" />
           </div>
 
-          <h5 className="subHeading-2 mb-3 text-light-blue">Avg. distance</h5>
+          <div className="lg:col-start-1 flex items-center justify-center">
+            <SectionImg
+              src={currentDestination.images.webp}
+              name={currentDestination.name}
+              specialClass="desc-element md:w-[40%] lg:w-[60%]"
+            />
+          </div>
 
-          <p className="desc-element subHeading-1 text-white">
-            {currentDestination.distance}
-          </p>
+          <div className="lg:max-w-screen-sm">
+            <ul className="list nav-text ml-0">
+              {destinations.map((dest, i) => (
+                <li
+                  className={i === index ? "destination active" : "destination"}
+                  key={dest.name}
+                  onClick={() => handleDestinationClick(i)}
+                >
+                  {dest.name}
+                </li>
+              ))}
+            </ul>
 
-          <h5 className="subHeading-2 mt-6 mb-3 text-light-blue">
-            Est. travel time
-          </h5>
-          <p className="desc-element subHeading-1 text-white">
-            {currentDestination.travel}
-          </p>
+            <h3 className="desc-element heading-3  text-white">
+              {currentDestination.name}
+            </h3>
+
+            <div className="">
+              <p className="desc-element description">
+                {currentDestination.description}
+              </p>
+
+              <div className="line my-6 md:my-10"></div>
+            </div>
+
+            <div className="flex flex-col md:flex-row items-center justify-center lg:justify-start gap-10">
+              <div>
+                <h5 className="subHeading-2">Avg. distance</h5>
+
+                <p className="desc-element subHeading-1 text-white">
+                  {currentDestination.distance}
+                </p>
+              </div>
+              <div>
+                <h5 className="subHeading-2">Est. travel time</h5>
+                <p className="desc-element subHeading-1 text-white">
+                  {currentDestination.travel}
+                </p>
+              </div>
+            </div>
+          </div>
         </>
       )}
     </section>

@@ -25,30 +25,24 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    
+    @apply min-h-screen relative z-0 text-light-blue text-center uppercase pt-28 pb-8 grid gap-y-8 md:pt-44 md:pb-24 lg:grid-cols-2 lg:px-32;
 
-    @apply min-h-screen relative z-0 text-light-blue text-center pt-28 md:pt-44 pb-10 md:pb-24 uppercase md:px-0;
     &#home {
       background-image: url(./assets/home/background-home-mobile.jpg);
-      @apply md:bg-[url(./assets/home/background-home-tablet.jpg)];
+      @apply md:bg-[url(./assets/home/background-home-tablet.jpg)] lg:bg-[url(./assets/home/background-home-desktop.jpg)];
     }
     &#destination {
       background-image: url(./assets/destination/background-destination-mobile.jpg);
-      @apply md:bg-[url(./assets/destination/background-destination-tablet.jpg)];
+      @apply md:bg-[url(./assets/destination/background-destination-tablet.jpg)] lg:bg-[url(./assets/destination/background-destination-desktop.jpg)];
     }
     &#crew {
       background-image: url(./assets/crew/background-crew-mobile.jpg);
-      @apply md:bg-[url(./assets/crew/background-crew-tablet.jpg)];
-      &::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: -1;
-        @apply backdrop-blur-[5px];
-      }
+      @apply md:bg-[url(./assets/crew/background-crew-tablet.jpg)] lg:bg-[url(./assets/crew/background-crew-desktop.jpg)];
     }
     &#technology {
       background-image: url(./assets/technology/background-technology-mobile.jpg);
-      @apply md:bg-[url(./assets/technology/background-technology-tablet.jpg)];
+      @apply md:bg-[url(./assets/technology/background-technology-tablet.jpg)] lg:bg-[url(./assets/technology/background-technology-desktop.jpg)];
     }
   }
 
@@ -65,8 +59,14 @@
 }
 
 @layer components {
+  .title {
+    @apply font-bellefair text-3xl text-white md:text-4xl;
+  }
+  .sub-title {
+    @apply font-bellefair text-xl text-light-blue text-opacity-60 md:text-2xl;
+  }
   .heading-1 {
-    font-size: 150px;
+    @apply text-[100px] md:text-[150px] text-white;
   }
   .heading-2 {
     font-size: 100px;
@@ -78,8 +78,8 @@
     font-size: 32px;
   }
   .heading-5 {
-    font-size: 14px;
     letter-spacing: 4.75px;
+    @apply text-[14px] md:text-[20px];
   }
   .subHeading-1 {
     font-size: 28px;
@@ -93,40 +93,61 @@
   .nav-text {
     font-size: 16px;
     letter-spacing: 2.7px;
-    @apply font-barlow-condensed;
+    @apply font-barlow-condensed lg:text-lg;
 
     & li {
       @apply relative;
 
       & a.nav {
         @apply md:py-8 block;
-        &.is-active::after {
+
+        &::after {
           content: "";
           position: absolute;
           right: 0;
           bottom: 0;
           top: 0;
           width: 5px;
-          background-color: white;
-          @apply md:left-0 md:top-[95%] md:w-full;
+          @apply md:left-0 md:top-[95%] md:w-full  bg-white bg-opacity-0;
+          &:hover {
+            @apply bg-opacity-35;
+          }
+          &.is-active {
+            @apply bg-opacity-100;
+          }
         }
       }
     }
   }
 
   .description {
+    text-wrap: balance;
     @apply normal-case font-extralight md:text-xl;
+  }
+
+  #primary-nav {
+    @apply pl-10 py-32 bg-dark bg-opacity-35 backdrop-filter backdrop-blur-xl fixed inset-0 left-36 translate-x-[100%] z-40 md:static md:translate-x-[0] md:bg-opacity-100 md:backdrop-blur-none lg:bg-opacity-35 lg:backdrop-blur-xl md:p-0 md:pl-[8vw] md:pr-[12vw];
+
+    &:before {
+      content: "";
+      position: absolute;
+      right: 97%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: clamp(40px, 30vw, 500px);
+      height: 0.08px;
+      @apply bg-light-blue bg-opacity-45 hidden lg:block;
+    }
   }
 
   #home-button {
     background-color: white;
-    padding: 4.5rem 2.25rem;
     border-radius: 50%;
     box-shadow: 0px 0px 0px 0px;
     transition: box-shadow 0.1s linear;
     font-size: 20px;
     font-weight: 300;
-    @apply text-dark;
+    @apply text-dark lg:text-4xl lg:px-12 lg:py-24;
 
     &:hover {
       box-shadow: 0px 0px 0px 30px;
@@ -181,7 +202,7 @@
       }
 
       &.tec-list {
-        @apply px-4 py-2 rounded-full text-white outline outline-1 outline-[rgba(255,255,255,0.3)] transition-all duration-500;
+        @apply text-white text-2xl px-9 py-6 rounded-full outline outline-1 outline-[rgba(255,255,255,1)];
         &:hover {
           @apply outline-white;
         }

@@ -71,24 +71,22 @@ export default function Crew({ entry, out, timer }: GsapChange) {
   }
 
   return (
-    <section
-      id="crew"
-      className="md:pb-0 md:pt-32 md:flex md:flex-col md:justify-between "
-    >
-      <SectionHeading number={2} title="Meet Your crew" />
-
+    <section id="crew" className="pb-20 md:pb-0 auto-rows-max">
       {currectCrewMember && (
-        <div className="flex flex-col md:flex-col-reverse">
-          <div className="flex flex-col md:flex-col-reverse">
+        <>
+          <SectionHeading number={2} title="Meet Your crew" />
+
+          <div className="md:row-start-2 lg:row-start-2 lg:col-start-2 lg:flex lg:items-end ">
             <SectionImg
-              specialClass="crew-el object-contain mt-6 w-56 md:w-[400px]"
+              specialClass="crew-el mx-auto aspect-square object-contain md:w-[75%] lg:w-[90%]"
               src={currectCrewMember.images.webp}
               name={currectCrewMember.name}
             />
-
             <div className="line md:hidden"></div>
+          </div>
 
-            <ul className="list nav-text">
+          <div className="lg:row-start-2 flex flex-col md:flex-col-reverse lg:pb-24">
+            <ul className="list nav-text lg:ml-0">
               {crewData.map((_, i) => (
                 <li
                   key={i}
@@ -97,20 +95,16 @@ export default function Crew({ entry, out, timer }: GsapChange) {
                 ></li>
               ))}
             </ul>
-          </div>
 
-          <div>
-            <h5 className="crew-el subHeading-2 md:text-3xl ">
-              {currectCrewMember.role}
-            </h5>
-            <h6 className="crew-el subHeading-1 md:heading-4 text-white my-6">
-              {currectCrewMember.name}
-            </h6>
-            <p className="crew-el description md:px-20">
-              {currectCrewMember.bio}
-            </p>
+            <div className="lg:text-start">
+              <h5 className="crew-el sub-title">{currectCrewMember.role}</h5>
+              <h4 className="crew-el title">{currectCrewMember.name}</h4>
+              <p className="crew-el description mt-6">
+                {currectCrewMember.bio}
+              </p>
+            </div>
           </div>
-        </div>
+        </>
       )}
     </section>
   );
